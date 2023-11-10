@@ -8,7 +8,7 @@ class TestApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // 初始化 KLog
-        val config = LogConfig(true, true, true)
+        val config = LogConfig(true, true, true,false)
         KLogManager.init(config)
     }
 }

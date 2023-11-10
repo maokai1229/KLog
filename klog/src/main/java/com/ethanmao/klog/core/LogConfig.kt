@@ -13,17 +13,13 @@ class LogConfig {
     private var mEnableThreadInfo = true
     // 是否打印堆栈信息
     private var mEnableStackInfo = true
-    private var mPrinters = mutableListOf<ILogPrinter>()
+    private var mIsClipStackTraceElement = true
 
-    constructor(isDebug: Boolean, enableThreadInfo: Boolean, enableStackInfo: Boolean){
+    constructor(isDebug: Boolean, enableThreadInfo: Boolean, enableStackInfo: Boolean,clip : Boolean){
         mIsDebug = isDebug
         mEnableThreadInfo = enableThreadInfo
         mEnableStackInfo = enableStackInfo
-        initPrinter()
-    }
-
-    private fun initPrinter() {
-
+        mIsClipStackTraceElement = clip
     }
 
 
