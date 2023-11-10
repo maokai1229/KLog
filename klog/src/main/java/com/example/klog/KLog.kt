@@ -63,8 +63,7 @@ object KLog {
 
         val stringBuilder = StringBuilder()
         for (obj in msg){
-            //todo 解析 Obj 为 String. 利用 new Gson().toJson(obj)
-            stringBuilder.append(obj.toString())
+            stringBuilder.append(KLogManager.getParser().toJson(obj))
             stringBuilder.append(";")
         }
 
