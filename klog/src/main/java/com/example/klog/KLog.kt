@@ -11,7 +11,15 @@ import java.util.logging.LogManager
  * 与 android.util.Log 不同在于，可以直接传入 Object 打印
  * 当然自动拆装箱，也会带来一些性能损耗
  */
-class KLog {
+object KLog {
+
+    fun v(tag: String,vararg msg: Any) {
+        log(LogLevel.VERBOSE, tag, msg)
+    }
+
+    fun v(vararg msg: Any) {
+        log(LogLevel.VERBOSE, KLogManager.getDefaultTag(), msg)
+    }
 
     fun w(tag: String,vararg msg: Any) {
         log(LogLevel.WARN, tag, msg)
@@ -47,12 +55,15 @@ class KLog {
 
 
     private fun log(logLevel: @LogLevel Int, tag: String,vararg msg: Any) {
-        if (KLogManager.getConfig() == null || KLogManager.getConfig().isDebug()){
+        if (KLogManager.getConfig() == null
+            || !KLogManager.getConfig().isDebug()
+            || msg.isNullOrEmpty()){
             return
         }
 
         val stringBuilder = StringBuilder()
         for (obj in msg){
+            //todo 解析 Obj 为 String. 利用 new Gson().toJson(obj)
             stringBuilder.append(obj.toString())
             stringBuilder.append(";")
         }

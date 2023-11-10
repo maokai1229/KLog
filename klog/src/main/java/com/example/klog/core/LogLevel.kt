@@ -6,6 +6,7 @@ import android.util.Log
  * 日志等级注解
  */
 @Target(AnnotationTarget.TYPE)
+@Retention(AnnotationRetention.SOURCE)
 annotation class LogLevel{
 
     companion object{

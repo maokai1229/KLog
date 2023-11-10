@@ -1,10 +1,25 @@
 package com.example.klog.formatter
 
+/**
+ * 对堆栈信息进行格式化
+ * 这里要考虑是否需要将堆栈信息进行裁剪
+ * 先裁剪完成后再进行格式化
+ */
 class StackTraceFormatter : IFormatter<Array<StackTraceElement>> {
+
+    private var mIsClip = true
+    private val clipLevel = 5
 
     override fun format(data: Array<StackTraceElement>): String {
         if (data.isEmpty()) {
             return ""
+        }
+
+        if (mIsClip){
+            if (data.size > clipLevel){
+             //
+
+            }
         }
 
         val strBuilder = StringBuilder()
