@@ -22,7 +22,7 @@ class StackTraceFormatter : IFormatter<Array<StackTraceElement>> {
             }
         }
 
-        val strBuilder = StringBuilder()
+        val strBuilder = StringBuilder(128)
 
         if (data.size == 1){
             strBuilder.append("/t ➤")
@@ -34,14 +34,14 @@ class StackTraceFormatter : IFormatter<Array<StackTraceElement>> {
                 // 堆栈信息格式化
                 if (index == 0){
                     strBuilder.append("/t ➤")
-                    strBuilder.append(data[index])
+                    strBuilder.append(data[index].toString())
                     strBuilder.append("/n")
                 }else if (index != data.size - 1){
                     strBuilder.append("/t - ")
-                    strBuilder.append(data[index])
+                    strBuilder.append(data[index].toString())
                     strBuilder.append("/n")
                 }else{
-                    strBuilder.append(data[index])
+                    strBuilder.append(data[index].toString())
                     strBuilder.append("/t ▲")
                 }
             }

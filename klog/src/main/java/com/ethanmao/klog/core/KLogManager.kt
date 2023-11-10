@@ -14,7 +14,7 @@ object KLogManager {
     private var mDefaultTag = "KLog"
     private lateinit var mConfig : LogConfig
     private var mPrinters = mutableListOf<ILogPrinter>()
-    private var mJsonParse = Gson()
+    private var mJsonParse : IJsonParser = JsonParserImpl()
 
     fun init(defaultTag : String,config: LogConfig){
         mDefaultTag = defaultTag
@@ -37,7 +37,7 @@ object KLogManager {
         return mConfig
     }
 
-    fun  getParser() : Gson{
+    fun  getParser() : IJsonParser{
         return mJsonParse
     }
 }
