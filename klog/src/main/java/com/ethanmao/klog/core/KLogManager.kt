@@ -1,4 +1,4 @@
-package com.example.klog.core
+package com.ethanmao.klog.core
 
 import com.google.gson.Gson
 
@@ -29,7 +29,7 @@ object KLogManager {
         return mDefaultTag
     }
 
-    fun getConfig() : LogConfig{
+    fun getConfig() : LogConfig {
         if (!mInited){
             // todo 未初始化是直接抛异常还是怎么
          }

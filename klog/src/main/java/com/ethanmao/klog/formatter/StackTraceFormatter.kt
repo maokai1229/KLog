@@ -1,4 +1,4 @@
-package com.example.klog.formatter
+package com.ethanmao.klog.formatter
 
 /**
  * 对堆栈信息进行格式化

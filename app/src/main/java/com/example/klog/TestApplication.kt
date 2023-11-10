@@ -1,8 +1,8 @@
 package com.example.klog
 
 import android.app.Application
-import com.example.klog.core.KLogManager
-import com.example.klog.core.LogConfig
+import com.ethanmao.klog.core.KLogManager
+import com.ethanmao.klog.core.LogConfig
 
 class TestApplication : Application() {
     override fun onCreate() {

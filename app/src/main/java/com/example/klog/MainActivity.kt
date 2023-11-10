@@ -3,6 +3,7 @@ package com.example.klog
 import android.app.Activity
 import android.os.Bundle
 import android.widget.Button
+import com.ethanmao.klog.KLog
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

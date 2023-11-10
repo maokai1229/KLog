@@ -1,8 +1,8 @@
-package com.example.klog
+package com.ethanmao.klog
 
 import android.util.Log
-import com.example.klog.core.KLogManager
-import com.example.klog.core.LogLevel
+import com.ethanmao.klog.core.KLogManager
+import com.ethanmao.klog.core.LogLevel
 import java.util.logging.LogManager
 
 /**
@@ -54,7 +54,7 @@ object KLog {
     }
 
 
-    private fun log(logLevel: @LogLevel Int, tag: String,vararg msg: Any) {
+    private fun log(logLevel: @LogLevel Int, tag: String, vararg msg: Any) {
         if (KLogManager.getConfig() == null
             || !KLogManager.getConfig().isDebug()
             || msg.isNullOrEmpty()){

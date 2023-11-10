@@ -1,4 +1,4 @@
-package com.example.klog.core
+package com.ethanmao.klog.core
 
 
 /**

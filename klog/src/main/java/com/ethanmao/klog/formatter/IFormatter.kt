@@ -1,4 +1,4 @@
-package com.example.klog.formatter
+package com.ethanmao.klog.formatter
 
 interface IFormatter<T> {
 
