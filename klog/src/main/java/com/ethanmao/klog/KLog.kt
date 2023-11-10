@@ -68,7 +68,6 @@ object KLog {
         }
 
         Log.println(logLevel, tag, stringBuilder.toString())
-
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ethanmao.klog.core
 
+import com.ethanmao.klog.printer.ILogPrinter
 
 
 /**
