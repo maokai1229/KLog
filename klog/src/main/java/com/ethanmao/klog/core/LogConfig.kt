@@ -23,17 +23,18 @@ class LogConfig {
     }
 
     private fun initPrinter() {
-//        if (mEnableStackInfo){
-//            mPrinters.add()
-//        }
-//        if (mEnableThreadInfo){
-//            mPrinters.add()
-//        }
+
     }
 
 
     fun isDebug() : Boolean{
         return mIsDebug
+    }
+    fun isEnableThreadInfo() : Boolean{
+        return mEnableThreadInfo
+    }
+    fun isEnableStackInfo() : Boolean{
+        return mEnableStackInfo
     }
 
 }

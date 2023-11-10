@@ -66,8 +66,17 @@ object KLog {
             stringBuilder.append(KLogManager.getParser().toJson(obj))
             stringBuilder.append(";")
         }
-
-        Log.println(logLevel, tag, stringBuilder.toString())
-    }
+        // 如果需要打印线程信息
+        if (KLogManager.getConfig().isEnableThreadInfo()){
+            stringBuilder.append(KLogManager.getThreadFormatter().format(Thread.currentThread()))
+        }
+        // 如果需要打印堆栈信息
+        if (KLogManager.getConfig().isEnableStackInfo()){
+            stringBuilder.append(KLogManager.getStackTraceFormatter().format(Throwable().stackTrace))
+        }
+        // 遍历 Printer
+        KLogManager.getPrinters().forEach {
+            it.print(logLevel, tag, stringBuilder.toString())
+        }}
 
 }

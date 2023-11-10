@@ -18,31 +18,31 @@ class StackTraceFormatter : IFormatter<Array<StackTraceElement>> {
         if (mIsClip){
             if (data.size > clipLevel){
              //
-
+//                data = data.copyOfRange(0,clipLevel)
             }
         }
 
         val strBuilder = StringBuilder(128)
 
         if (data.size == 1){
-            strBuilder.append("/t ➤")
+            strBuilder.append("\t ➤ ")
             strBuilder.append(data[0])
-            strBuilder.append("/n")
-            strBuilder.append("/t ▲")
+            strBuilder.append("\n")
+            strBuilder.append("\t ▲")
         }else{
             for (index in data.indices){
                 // 堆栈信息格式化
                 if (index == 0){
-                    strBuilder.append("/t ➤")
+                    strBuilder.append("\t ➤ ")
                     strBuilder.append(data[index].toString())
-                    strBuilder.append("/n")
+                    strBuilder.append("\n")
                 }else if (index != data.size - 1){
-                    strBuilder.append("/t - ")
+                    strBuilder.append("\t - ")
                     strBuilder.append(data[index].toString())
-                    strBuilder.append("/n")
+                    strBuilder.append("\n")
                 }else{
                     strBuilder.append(data[index].toString())
-                    strBuilder.append("/t ▲")
+                    strBuilder.append("\t ▲")
                 }
             }
         }

@@ -8,6 +8,6 @@ import com.ethanmao.klog.core.LogLevel
  */
 interface ILogPrinter {
 
-    fun print(logLevel: @LogLevel Int,tag: String, msg: Any)
+    fun print(logLevel: @LogLevel Int,tag: String, msg: String)
 
 }

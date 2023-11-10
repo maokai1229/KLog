@@ -8,8 +8,8 @@ import android.util.Log
  */
 class ConsoleLogPrinter : ILogPrinter {
 
-    override fun print(logLevel: Int, tag: String, msg: Any) {
-        Log.println(logLevel,tag, msg.toString())
+    override fun print(logLevel: Int, tag: String, msg: String) {
+        Log.println(logLevel,tag, msg)
     }
 
 

@@ -1,5 +1,8 @@
 package com.ethanmao.klog.core
 
+import com.ethanmao.klog.formatter.StackTraceFormatter
+import com.ethanmao.klog.formatter.ThreadFormatter
+import com.ethanmao.klog.printer.ConsoleLogPrinter
 import com.ethanmao.klog.printer.ILogPrinter
 import com.google.gson.Gson
 
@@ -15,6 +18,8 @@ object KLogManager {
     private lateinit var mConfig : LogConfig
     private var mPrinters = mutableListOf<ILogPrinter>()
     private var mJsonParse : IJsonParser = JsonParserImpl()
+    private val mThreadFormatter = ThreadFormatter()
+    private val mStackTraceFormatter = StackTraceFormatter()
 
     fun init(defaultTag : String,config: LogConfig){
         mDefaultTag = defaultTag
@@ -24,6 +29,11 @@ object KLogManager {
     fun init(config: LogConfig){
         mConfig = config
         mInited = true
+        initPrinter()
+    }
+
+    private fun initPrinter() {
+        mPrinters.add(ConsoleLogPrinter())
     }
 
     fun getDefaultTag(): String {
@@ -39,5 +49,17 @@ object KLogManager {
 
     fun  getParser() : IJsonParser{
         return mJsonParse
+    }
+
+    fun getPrinters() : List<ILogPrinter>{
+        return mPrinters
+    }
+
+    fun getThreadFormatter() : ThreadFormatter{
+        return mThreadFormatter
+    }
+
+    fun getStackTraceFormatter() : StackTraceFormatter{
+       return mStackTraceFormatter
     }
 }
