@@ -8,21 +8,27 @@ package com.example.klog.core
 object KLogManager {
 
     private var mInited = false
-    private var mIsEnabled = true
     private var mDefaultTag = "KLog"
+    private lateinit var mConfig : LogConfig
 
-    fun init(isEnable : Boolean,defaultTag : String){
-        mIsEnabled = isEnable
+    fun init(defaultTag : String,config: LogConfig){
         mDefaultTag = defaultTag
-        mInited = true
+        init(config)
     }
 
-
-    fun isEnabled(): Boolean {
-        return mIsEnabled
+    fun init(config: LogConfig){
+        mConfig = config
+        mInited = true
     }
 
     fun getDefaultTag(): String {
         return mDefaultTag
+    }
+
+    fun getConfig() : LogConfig{
+        if (!mInited){
+            // todo 未初始化是直接抛异常还是怎么
+         }
+        return mConfig
     }
 }

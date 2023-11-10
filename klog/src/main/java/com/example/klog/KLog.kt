@@ -47,7 +47,7 @@ class KLog {
 
 
     private fun log(logLevel: @LogLevel Int, tag: String,vararg msg: Any) {
-        if (!KLogManager.isEnabled()){
+        if (KLogManager.getConfig() == null || KLogManager.getConfig().isDebug()){
             return
         }
 

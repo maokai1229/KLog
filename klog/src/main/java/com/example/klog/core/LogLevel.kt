@@ -9,6 +9,7 @@ import android.util.Log
 annotation class LogLevel{
 
     companion object{
+        const val VERBOSE = Log.VERBOSE
         const val INFO = Log.INFO
         const val DEBUG = Log.DEBUG
         const val WARN = Log.WARN
