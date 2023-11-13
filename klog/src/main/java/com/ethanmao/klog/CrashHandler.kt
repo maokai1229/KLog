@@ -6,6 +6,11 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
 
+/**
+ *  崩溃信息处理
+ *  崩溃发生时,复制到系统剪切板
+ *  用于排查测试阶段发生的 Crash
+ */
 class CrashHandler (val application: Application): Thread.UncaughtExceptionHandler {
 
     override fun uncaughtException(thread: Thread, throwable: Throwable) {
