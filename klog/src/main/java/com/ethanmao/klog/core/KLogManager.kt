@@ -1,10 +1,11 @@
 package com.ethanmao.klog.core
 
+import android.app.Application
 import com.ethanmao.klog.formatter.StackTraceFormatter
 import com.ethanmao.klog.formatter.ThreadFormatter
 import com.ethanmao.klog.printer.ConsoleLogPrinter
+import com.ethanmao.klog.CrashHandler
 import com.ethanmao.klog.printer.ILogPrinter
-import com.google.gson.Gson
 
 
 /**
@@ -21,15 +22,19 @@ object KLogManager {
     private val mThreadFormatter = ThreadFormatter()
     private val mStackTraceFormatter = StackTraceFormatter()
 
-    fun init(defaultTag : String,config: LogConfig){
+    fun init(application: Application,defaultTag : String,config: LogConfig){
         mDefaultTag = defaultTag
-        init(config)
+        init(application,config)
     }
 
-    fun init(config: LogConfig){
+    fun init(application: Application,config: LogConfig){
         mConfig = config
         mInited = true
         initPrinter()
+        // 抓取崩溃信息到剪切板
+        if (mConfig.isDebug()){
+            Thread.setDefaultUncaughtExceptionHandler(CrashHandler(application))
+        }
     }
 
     private fun initPrinter() {

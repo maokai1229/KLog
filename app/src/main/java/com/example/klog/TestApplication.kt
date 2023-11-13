@@ -9,6 +9,6 @@ class TestApplication : Application() {
         super.onCreate()
         // 初始化 KLog
         val config = LogConfig(true, true, true,false)
-        KLogManager.init(config)
+        KLogManager.init(this,config)
     }
 }
