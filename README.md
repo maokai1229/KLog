@@ -11,21 +11,35 @@
 以上日志信息只在 isDebug 为 true 时生效
 
 ### 依赖
+在打包 aar 引入使用,由于 jitpack 对于编译的 jdk 版本要求 17,不太好用,最好打 aar  
+[//]: # ()
+[//]: # (* 项目 Gradle 添加)
 
-* 项目 Gradle 添加
+[//]: # ()
+[//]: # (```css)
 
-```css
-// Project Root Gradle
-repositories {
-			mavenCentral()
-			maven { url 'https://jitpack.io' }
-		}
-```
+[//]: # (// Project Root Gradle)
 
-* 使用的模块中添加
+[//]: # (repositories {)
 
-  ```css
-  dependencies {
-  	        implementation 'com.github.maokai1229:KLog:0.1.0'
-  	}
-  ```
+[//]: # (			mavenCentral&#40;&#41;)
+
+[//]: # (			maven { url 'https://jitpack.io' })
+
+[//]: # (		})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (* 使用的模块中添加)
+
+[//]: # ()
+[//]: # (  ```css)
+
+[//]: # (  dependencies {)
+
+[//]: # (  	        implementation 'com.github.maokai1229:KLog:0.1.0')
+
+[//]: # (  	})
+
+[//]: # (  ```)
