@@ -14,34 +14,33 @@ class StackTraceFormatter : IFormatter<Array<StackTraceElement>> {
         if (data.isEmpty()) {
             return ""
         }
-
+        var clipedData =  data
         if (mIsClip){
             if (data.size > clipLevel){
-             //
-//                data = data.copyOfRange(0,clipLevel)
+                clipedData = data.copyOfRange(0,clipLevel)
             }
         }
 
         val strBuilder = StringBuilder(128)
 
-        if (data.size == 1){
+        if (clipedData.size == 1){
             strBuilder.append("\t ➤ ")
-            strBuilder.append(data[0])
+            strBuilder.append(clipedData[0])
             strBuilder.append("\n")
             strBuilder.append("\t ▲")
         }else{
-            for (index in data.indices){
+            for (index in clipedData.indices){
                 // 堆栈信息格式化
                 if (index == 0){
                     strBuilder.append("\t ➤ ")
-                    strBuilder.append(data[index].toString())
+                    strBuilder.append(clipedData[index].toString())
                     strBuilder.append("\n")
-                }else if (index != data.size - 1){
+                }else if (index != clipedData.size - 1){
                     strBuilder.append("\t - ")
-                    strBuilder.append(data[index].toString())
+                    strBuilder.append(clipedData[index].toString())
                     strBuilder.append("\n")
                 }else{
-                    strBuilder.append(data[index].toString())
+                    strBuilder.append(clipedData[index].toString())
                     strBuilder.append("\t ▲")
                 }
             }
