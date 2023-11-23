@@ -5,6 +5,7 @@ import com.ethanmao.klog.formatter.StackTraceFormatter
 import com.ethanmao.klog.formatter.ThreadFormatter
 import com.ethanmao.klog.printer.ConsoleLogPrinter
 import com.ethanmao.klog.CrashHandler
+import com.ethanmao.klog.printer.FileLogPrinter
 import com.ethanmao.klog.printer.ILogPrinter
 
 
@@ -30,15 +31,16 @@ object KLogManager {
     fun init(application: Application,config: LogConfig){
         mConfig = config
         mInited = true
-        initPrinter()
+        initPrinter(application)
         // 抓取崩溃信息到剪切板
         if (mConfig.isDebug()){
             Thread.setDefaultUncaughtExceptionHandler(CrashHandler(application))
         }
     }
 
-    private fun initPrinter() {
+    private fun initPrinter(application: Application) {
         mPrinters.add(ConsoleLogPrinter())
+        mPrinters.add(FileLogPrinter(application))
     }
 
     fun getDefaultTag(): String {
