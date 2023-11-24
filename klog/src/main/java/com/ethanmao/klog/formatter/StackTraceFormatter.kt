@@ -10,6 +10,10 @@ class StackTraceFormatter : IFormatter<Array<StackTraceElement>> {
     private var mIsClip = true
     private val clipLevel = 5
 
+    fun setClipTrace(isClip : Boolean){
+        mIsClip = isClip
+    }
+
     override fun format(data: Array<StackTraceElement>): String {
         if (data.isEmpty()) {
             return ""

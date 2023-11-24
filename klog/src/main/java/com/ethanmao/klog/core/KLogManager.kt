@@ -31,6 +31,7 @@ object KLogManager {
     fun init(application: Application,config: LogConfig){
         mConfig = config
         mInited = true
+        mStackTraceFormatter.setClipTrace(mConfig.isClipStackTrace())
         initPrinter(application)
         // 抓取崩溃信息到剪切板
         if (mConfig.isDebug()){

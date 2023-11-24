@@ -26,11 +26,18 @@ class LogConfig {
     fun isDebug() : Boolean{
         return mIsDebug
     }
+
     fun isEnableThreadInfo() : Boolean{
         return mEnableThreadInfo
     }
+
     fun isEnableStackInfo() : Boolean{
         return mEnableStackInfo
+    }
+
+
+    fun isClipStackTrace() : Boolean{
+        return mIsClipStackTraceElement
     }
 
 }
