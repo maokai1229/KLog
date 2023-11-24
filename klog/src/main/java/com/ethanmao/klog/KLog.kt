@@ -13,59 +13,57 @@ import java.util.logging.LogManager
  */
 object KLog {
 
-    fun v(tag: String,vararg msg: Any) {
+    fun v(tag: String,msg: Any) {
         log(LogLevel.VERBOSE, tag, msg)
     }
 
-    fun v(vararg msg: Any) {
+    fun v(msg: Any) {
         log(LogLevel.VERBOSE, KLogManager.getDefaultTag(), msg)
     }
 
-    fun w(tag: String,vararg msg: Any) {
+    fun w(tag: String,msg: Any) {
         log(LogLevel.WARN, tag, msg)
     }
 
-    fun w(vararg msg: Any) {
+    fun w(msg: Any) {
         log(LogLevel.WARN, KLogManager.getDefaultTag(), msg)
     }
 
-    fun i(vararg msg: Any) {
+    fun i(msg: Any) {
         log(LogLevel.INFO, KLogManager.getDefaultTag(), msg)
     }
 
-    fun i(tag: String,vararg msg: Any) {
+    fun i(tag: String, msg: Any) {
         log(LogLevel.INFO, tag, msg)
     }
 
-    fun d(vararg msg: Any) {
+    fun d(msg: Any) {
         log(LogLevel.DEBUG, KLogManager.getDefaultTag(), msg)
     }
 
-    fun d(tag: String,vararg msg: Any) {
+    fun d(tag: String,msg: Any) {
         log(LogLevel.DEBUG, tag, msg)
     }
 
-    fun e(tag: String,vararg msg: Any) {
+    fun e(tag: String,msg: Any) {
         log(LogLevel.ERROR, tag, msg)
     }
 
-    fun e(vararg msg: Any) {
+    fun e(msg: Any) {
         log(LogLevel.ERROR, KLogManager.getDefaultTag(), msg)
     }
 
 
-    private fun log(logLevel: @LogLevel Int, tag: String, vararg msg: Any) {
+    private fun log(logLevel: @LogLevel Int, tag: String, msg: Any) {
         if (KLogManager.getConfig() == null
-            || !KLogManager.getConfig().isDebug()
-            || msg.isNullOrEmpty()){
+            || !KLogManager.getConfig().isDebug()){
             return
         }
 
         val stringBuilder = StringBuilder()
-        for (obj in msg){
-            stringBuilder.append(KLogManager.getParser().toJson(obj))
-            stringBuilder.append(";")
-        }
+        stringBuilder.append(KLogManager.getParser().toJson(msg))
+        stringBuilder.append(";")
+
         // 如果需要打印线程信息
         if (KLogManager.getConfig().isEnableThreadInfo()){
             stringBuilder.append(KLogManager.getThreadFormatter().format(Thread.currentThread()))
